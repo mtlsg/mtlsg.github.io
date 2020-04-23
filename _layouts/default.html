@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="{{ page.lang | default: site.lang | default: "en" }}">
+
+  {%- include head.html -%}
+
+  <body>
+
+    {%- include header.html -%}
+
+    <main class="page-content" aria-label="Content">
+      <div class="wrapper-left">
+        {{ content }}
+      </div>
+      <div class="wrapper-right">
+	<h4 style="border-bottom: 1px solid #e8e8e8; margin-bottom: 10px;">Recent posts</h4>
+	  {% for post in site.posts limit:10 %}
+	    <a href="{{ post.url }}" style="text-decoration: underline;">
+           <h5 style="margin-bottom: 5px;">{{ post.title }}</h5></a>
+          {% endfor %}
+        <h4 style="border-bottom: 1px solid #e8e8e8; margin-bottom: 10px; margin-top: 15px;">RSS Feed</h4>
+        <h5>Subscribe <a href="{{ "/feed.xml" | relative_url }}" style="text-decoration: underline;">here</a></h5>
+	<h4 style="border-bottom: 1px solid #e8e8e8; margin-bottom: 10px;">Categories</h4>
+	  {% for category in site.categories %}
+	  <div><a href="{{ site.baseurl }}/category/{{ category[0] }}" style="text-decoration: underline;"><h5 style="margin-bottom: 5px;">{{ category | first }} ({{ category[1].size }})</h5></a></div>
+  	  {% endfor %}
+      </div>
+    </main>
+
+    {%- include footer.html -%}
+
+  </body>
+
+</html>
