@@ -3,3 +3,5 @@ theme: minima
 show_excerpts: true
 permalink: pretty
 markdown: kramdown
+plugins:
+  - jekyll-feed
